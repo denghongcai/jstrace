@@ -1,3 +1,4 @@
+'use strict';
 
 /**
  * This file illustrates how remote execution
@@ -14,7 +15,7 @@
  * Module dependencies.
  */
 
-var trace = require('..');
+const trace = require('..');
 
 // things you can filter by:
 
@@ -28,7 +29,7 @@ process.title = 'big';
 // transmitting the data
 
 setInterval(function(){
-  var kb = Math.random() * 500 | 0;
-  var str = Array(kb * 1024).join('-');
+  const kb = Math.random() * 500 | 0;
+  const str = new Array(kb * 1024).join('-');
   trace('alloc', { value: str });
 }, 150);

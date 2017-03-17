@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 
+'use strict';
+
 /**
  * Module dependencies.
  */
 
-var Local = require('../lib/local');
-var program = require('commander');
-var pkg = require('../package');
-var assert = require('assert');
-var path = require('path');
+const Local = require('../lib/local');
+const program = require('commander');
+const pkg = require('../package');
+const assert = require('assert');
+const path = require('path');
 
 // options
 
@@ -22,23 +24,23 @@ program
 
 // pid or title
 
-var hostname = program.host;
-var title = program.title;
-var pid = program.pid;
+const hostname = program.host;
+const title = program.title;
+const pid = program.pid;
 
 // script
 
-var script = program.args[0];
+const script = program.args[0];
 assert(script, '<script> path required');
 
 // load the module
 
-var mod = require(path.resolve(script));
+const mod = require(path.resolve(script));
 assert(mod.local || mod.remote, '.local or .remote required');
 
 // start
 
-var local = new Local({
+const local = new Local({
   remote: mod.remote,
   hostname: hostname,
   title: title,

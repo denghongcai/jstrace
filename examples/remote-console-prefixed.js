@@ -1,7 +1,8 @@
+'use strict';
 
 exports.remote = function(traces){
   // console.* calls relay to the local client
-  var id = setInterval(function(){
+  const id = setInterval(function(){
     console.dir({
       user: {
         name: {

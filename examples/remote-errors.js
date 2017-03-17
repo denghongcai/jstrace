@@ -1,3 +1,4 @@
+'use strict';
 
 exports.remote = function(){
   // reference error :D

@@ -1,3 +1,4 @@
+'use strict';
 
 /**
  * Local execution, jstrace detects that we want
@@ -6,7 +7,7 @@
  * volumne this can be expensive, however or many cases it is fine.
  */
 
-var m = {};
+const m = {};
 
 exports.local = function(traces){
   traces.on('request:*', function(trace){
@@ -16,7 +17,7 @@ exports.local = function(traces){
         break;
 
       case 'request:end':
-        var d = Date.now() - m[trace.id];
+        const d = Date.now() - m[trace.id];
         console.log('%s -> %sms', trace.id, d);
         break;
     }

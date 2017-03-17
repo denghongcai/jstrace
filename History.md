@@ -1,3 +1,8 @@
+1.0.0 / 2017-03-18
+==================
+
+ * refactor using node supported ES2015
+ * add opts.host, opts.port to Server Class
 
 0.3.0 / 2014-06-02
 ==================

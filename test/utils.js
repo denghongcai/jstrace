@@ -1,10 +1,11 @@
+'use strict';
 
-var utils = require('../lib/utils');
-var assert = require('assert');
+const utils = require('../lib/utils');
+const assert = require('assert');
 
 describe('utils.pattern(str)', function(){
   it('should convert to regular expressions', function(){
-    var re = utils.pattern('foo:bar:baz');
+    let re = utils.pattern('foo:bar:baz');
     re.should.eql(/^foo\:bar\:baz$/i);
 
     assert(true == re.test('foo:bar:baz'));
@@ -12,29 +13,29 @@ describe('utils.pattern(str)', function(){
     assert(false == re.test('foo:bar:baz:hey'));
     assert(false == re.test('foo:bar:ba'));
 
-    var re = utils.pattern('foo:*:baz');
+    re = utils.pattern('foo:*:baz');
     re.should.eql(/^foo\:.+?\:baz$/i);
 
     assert(true == re.test('foo:hey:baz'));
     assert(true == re.test('foo:something:here:baz'));
     assert(false == re.test('foo:something:here'));;
 
-    var re = utils.pattern('[foo-bar]:baz')
+    re = utils.pattern('[foo-bar]:baz')
     re.should.eql(/^\[foo-bar\]\:baz$/i);
 
     assert(true == re.test('[foo-bar]:baz'));
     assert(false == re.test('[foo-bar]:'));
 
-    var re = utils.pattern('*');
+    re = utils.pattern('*');
     assert(true == re.test('foo'));
     assert(true == re.test('foo:bar:baz'));
     assert(true == re.test('foo:Hey'));
-  })
-})
+  });
+});
 
 describe('utils.patterns(patterns)', function(){
   it('should convert to a master regexp', function(){
-    var re = utils.patterns(['foo:bar', 'bar:*', 'baz']);
+    const re = utils.patterns(['foo:bar', 'bar:*', 'baz']);
     re.should.eql(/^(foo\:bar)|(bar\:.+?)|(baz)$/);
 
     assert(true == re.test('foo:bar'));
@@ -45,4 +46,4 @@ describe('utils.patterns(patterns)', function(){
     assert(false == re.test('foo:stuff'));
     assert(false == re.test('foo:'));
   })
-})
+});

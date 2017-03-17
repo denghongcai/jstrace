@@ -1,3 +1,4 @@
+'use strict';
 
 /**
  * This example shows how you can perform more
@@ -5,14 +6,13 @@
  * using jstrace/chart.
  */
 
-var chart = require('chart');
-var clear = require('clear');
-
-var data = [];
-var n = 0;
+const chart = require('chart');
+const clear = require('clear');
+const data = [];
+let n = 0;
 
 exports.local = function(traces){
-  traces.on('request:end', function(trace){
+  traces.on('request:end', function(){
     n++
   });
 };

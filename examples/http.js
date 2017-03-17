@@ -1,10 +1,11 @@
+'use strict';
 
 /**
  * Module dependencies.
  */
 
-var http = require('http');
-var trace = require('..');
+const http = require('http');
+const trace = require('..');
 
 // things you can filter by:
 
@@ -13,11 +14,11 @@ process.title = 'http';
 
 // request id
 
-var ids = 0;
+let ids = 0;
 
 // randomized status
 
-var status = [
+const status = [
   200,
   201,
   400,
@@ -28,15 +29,15 @@ var status = [
 
 // server
 
-var server = http.createServer(function(req, res){
-  var id = ++ids;
+const server = http.createServer(function(req, res){
+  const id = ++ids;
 
-  trace('request:start', { id: id });
+  trace('request:start', { id });
   setTimeout(function(){
 
     res.statusCode = status[Math.random() * status.length | 0];
     res.end('hello world');
-    trace('request:end', { id: id, status: res.statusCode });
+    trace('request:end', { id, status: res.statusCode });
   }, Math.random() * 250 | 0);
 });
 

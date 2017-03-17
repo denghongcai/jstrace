@@ -1,3 +1,4 @@
+'use strict';
 
 /**
  * This example illustrates how we can utilize
@@ -20,7 +21,7 @@ exports.remote = function(traces){
  */
 
 exports.local = function(traces){
-  var bytes = require('bytes');
+  const bytes = require('bytes');
   traces.on('alloc length', function(len){
     console.log('alloc %s', bytes(len));
   });

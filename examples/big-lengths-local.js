@@ -1,3 +1,4 @@
+'use strict';
 
 /**
  * This example illustrates how you can omit .remote
@@ -7,7 +8,7 @@
  */
 
 exports.local = function(traces){
-  var bytes = require('bytes');
+  const bytes = require('bytes');
   traces.on('alloc', function(trace){
     console.log('alloc %s', bytes(trace.value.length));
   });
